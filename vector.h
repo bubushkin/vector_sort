@@ -67,4 +67,9 @@ void v_reverse(Vector *, int);
  */
 void v_print(Vector *pa_v, const char *);
 
+/*
+ * method to print vector elements for a given range to stdout
+ */
+void _print_range(Vector **, int, int, const char *);
+
 #endif /* VECTOR_H_ */
