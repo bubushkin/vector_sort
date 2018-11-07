@@ -11,6 +11,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+//#ifndef DEBUG
+//#define DEBUG
+//#endif
+
 #define MAX_VAL 99
 
 #define PRINT_ERR(M, ...) fprintf(stderr, "[ERROR] (%s:%d) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
@@ -37,6 +41,10 @@
 			break;							\
 	}
 
+#define INIT_SORTER() \
+			p_sorter->p_merge_sort = merge_sort; \
+			p_sorter->p_quick_sort = quick_sort; \
+			p_sorter->p_heap_sort = heap_sort;	 \
 
 #define STDOUT stdout
 
