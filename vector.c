@@ -72,6 +72,7 @@ void del_vector_element(Vector *pa_v){
 	pa_v->p_generate = NULL;
 	pa_v->p_print = NULL;
 	pa_v->p_update = NULL;
+	pa_v->p_reverse = NULL;
 	free(pa_v);
 }
 
@@ -117,15 +118,27 @@ void v_reverse(Vector *pa_v, int size){
 	}
 }
 
-
 void v_print(Vector *pa_v, const char *msg){
-
 	int *p_aux = pa_v->pdata;
-	fprintf(STDOUT, "=== %s ===\n", msg);
-	fprintf(STDOUT, "Capacity: %d\nCount: %d\n", (int)pa_v->size, (int)pa_v->count);
-	fprintf(STDOUT, "[\n\t");
+	printf("%s: [", msg);
 	for(int idx = 0x0; idx < pa_v->size; idx++){
-		fprintf(STDOUT, "%d | ", *p_aux++);
+		printf(" %d ", *p_aux++);
 	}
-	fprintf(STDOUT, "\n]\n");
+	printf("]\n");
 }
+
+void _print_range(Vector **pa_v, int aset, int aoffset, const char *func){
+
+	printf("%s, Set: %d  OffSet: %d \n", func, aset, aoffset);
+	for(int idx = aset; idx <= aoffset; idx++){
+		Vector *p_aux = pa_v[idx];
+		printf("[ ");
+		for(int i = 0; i < p_aux->size; i++)
+			printf(" %d ", p_aux->pdata[i]);
+		printf(" ]");
+		printf("\n");
+	}
+	printf("\n");
+
+}
+
